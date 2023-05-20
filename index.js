@@ -6,9 +6,8 @@ const scrapingRouter = require("./router/scraping/index.js")
 const port = process.env.PORT || 3001
 const app = express()
 
-app.use(cors({ origin: "*" }))
-
 app.use(express.json())
+app.use(cors({ origin: "*" }))
 app.use("/scraping", scrapingRouter)
 
 app.listen(port, () => {
