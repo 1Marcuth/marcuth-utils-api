@@ -8,12 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const api_1 = __importDefault(require("./api"));
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    const app = (0, api_1.default)();
-    yield app.start();
-}))();
+const db_1 = require("../../utils/db");
+const controller = {
+    all(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const products = yield (0, db_1.getAllProducts)();
+            return res.status(200).send(products);
+        });
+    }
+};
+exports.default = controller;
